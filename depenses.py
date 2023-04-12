@@ -83,7 +83,8 @@ try :
                                 nouveau_montant = amountv
                                 date = "{:%Y-%m-%d }".format(now)
                                 devise = choice
-                                nouvelle_ligne = "{}, {}, {}\n".format(nouveau_montant, date, devise)
+                                montant_restant = amountv - depenses_jour
+                                nouvelle_ligne = "{}, {}, {},{}\n".format(nouveau_montant, date, devise, depenses_jour, montant_restant)
                                 contenu_mis_a_jour = contenu + nouvelle_ligne
                                 fi.write(contenu_mis_a_jour)
                                 print("Montant enregistré avec succès !")
@@ -94,7 +95,7 @@ except FileNotFoundError:
     # Ouverture du fichier en mode écriture
       with open(fichier, "w") as fichier:
         # Écriture des en-têtes de colonnes
-        fichier.write("montant,date,devise,motif\n")
+        fichier.write("montant,date,devise,motif, montant_restant\n")
     
         # Écriture des données de saisie de montant
   
@@ -102,8 +103,9 @@ except FileNotFoundError:
         date = "{:%Y-%m-%d }".format(now)
         devise = choice
         motif = input("Entrez le motif: ")
+        montant_restant = amount - depenses_jour
 
-        ligne = "{},{},{}\n".format(montant, date, devise, motif)
+        ligne = "{},{},{}, {}\n".format(montant, date, devise, motif, montant_restant)
         fichier.write(ligne)
         print("Fichier créé avec succès !")
         
