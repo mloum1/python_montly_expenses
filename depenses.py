@@ -1,27 +1,17 @@
 import datetime
 
 devises = ['dollar', 'euro', 'yen', 'pound', 'franc CFA']
-
-# Afficher la liste des devises disponibles
 print("Les devises disponibles sont :")
 for devise in devises:
     print("-", devise)
 
-# Demander à l'utilisateur de choisir une devise
 choice = input("Entrez le nom de votre devise : ")
-
-# Vérifier si le choix de l'utilisateur est valide
 if choice not in devises:
     print("Devise invalide, veuillez réessayer")
-
-    # Tant que le choix de l'utilisateur n'est pas valide, demander à l'utilisateur de choisir une devise
-    # Nombre d'essais
     nb_essais = 0
     while choice not in devises:
         choice = input("Entrez le nom de votre devise : ")
-        # Incrémenter le nombre d'essais
         nb_essais += 1
-        # Vérifier si le nombre d'essais est supérieur à 3
         if nb_essais > 3:
             print("Vous avez dépassé le nombre de tentatives autorisées")
             exit()
@@ -29,19 +19,21 @@ if choice not in devises:
 else:
     print("Vous avez choisi la devise", choice)
 
-# Demander à l'utilisateur de saisir un montant
+      ####** saisie du mois **####
+###**================================**###
+salary = float(input("Entrez votre salaire : "))
+now = datetime.datetime.now()
+date_salaire = now.strftime("%d-%m-%Y")
+      ####** Fin de ce variable **####
+###**================================**###
+
+
 amount = float(input("Entrez un montant : "))
 
-# Vérifier si le montant est supérieur à 0
 if amount <= 0:
     print("Le montant doit être supérieur à 0")
     exit()
 
-# Obtenir la date du jour
-now = datetime.datetime.now()
-
-# Créer une variable pour la date de saisie du montant de votre salaire
-date_salaire = now.strftime("%d-%m-%Y")
 
 # Afficher le montant et la date de saisie du montant et la devise choisie
 if amount > 1:
@@ -116,6 +108,7 @@ except FileNotFoundError:
 
             
              
+
 
 
 
