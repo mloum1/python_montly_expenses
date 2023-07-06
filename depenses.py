@@ -1,4 +1,5 @@
 import datetime
+import os
 
 devises = ['dollar', 'euro', 'yen', 'pound', 'franc CFA']
 print("Les devises disponibles sont :")
@@ -22,10 +23,46 @@ else:
       ####** saisie du mois **####
 ###**================================**###
 salary = float(input("Entrez votre salaire : "))
+
+
+
 now = datetime.datetime.now()
 date_salaire = now.strftime("%d-%m-%Y")
       ####** Fin de ce variable **####
 ###**================================**###
+print ("Vous avez saisi un salaire de", salary, choice, "le", date_salaire, "souhaiteriez-vous continuer?")
+print("1. Oui")
+print("2. Non")
+choix = input("Entrez votre choix: ")
+
+if choix in [1, "Oui", "oui"]:
+    
+    ## ce montant doit être supérieur à 0
+    if salary <= 200:
+        print("Le salaire doit être supérieur à 200", str(choice + "s" ))
+        exit()
+     
+    if os.path.exists(f"saisie_montant_{now.strftime(':%Y-%m')}.csv"):
+         print("Un fichier pour cette date existe déjà.") 
+    else:
+            print("vous êtes passé à l'étape suivante !")
+            
+if choix in [2, "N", "Non", "non"]:
+ 
+    print("Vous souhaitez modifier le moment de votre salaire ?")
+    print("1. Oui")
+    print("2. Non")
+    
+    choixNon = input("Entrez votre choix: ")
+    
+    
+        ## si oui, demander à l'utilisateur s'il veut ajouter le montant saisi dans le fichier
+        
+        
+    ## ajouter le montant saisi dans le fichier
+    fichier = "salaire_{:%Y-%m}.csv".format(now)
+    ##le fichier doit con
+    
 
 
 amount = float(input("Entrez un montant : "))
@@ -108,8 +145,3 @@ except FileNotFoundError:
 
             
              
-
-
-
-
-
